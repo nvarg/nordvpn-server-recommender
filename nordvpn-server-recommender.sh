@@ -18,6 +18,14 @@ get_opt() {
     fi
 }
 
+requires() {
+    command -v "$1" || {
+        echo "Error: $0 requires $1, but it is not installed." >&2
+        echo "Error: Aborting." >&2
+        exit 1
+    }
+}
+
 usage() {
     echo "usage: [-hu] $0 [-c <country code>] [-t <technology>] [-g <group>]"
 }
@@ -41,6 +49,9 @@ help() {
     } | column -t -s :
 }
 
+requires curl >/dev/null
+requires jq >/dev/null
+
 country='null'
 technology='null'
 group='null'
@@ -55,7 +66,7 @@ while getopts "uhc:t:g:" opt; do
             else
                 country="$(get_opt "$OPTARG" "$(nordvpn_api countries code)")"
                 if [ "$country" = "" ]; then
-                    echo "ERROR: $OPTARG is not a valid country code. Run '$0 -c list' to list the available country codes"
+                    echo "ERROR: $OPTARG is not a valid country code. Run '$0 -c list' to list the available country codes" >&2
                     exit 1
                 fi
             fi
@@ -68,7 +79,7 @@ while getopts "uhc:t:g:" opt; do
             else
                 technology="$(get_opt "$OPTARG" "$(nordvpn_api technologies name)")"
                 if [ "$technology" = "" ]; then
-                    echo "ERROR: $OPTARG is not a valid technology name. Run '$0 -t list' to list the available technology names"
+                    echo "ERROR: $OPTARG is not a valid technology name. Run '$0 -t list' to list the available technology names" >&2
                     exit 1
                 fi
             fi
@@ -81,7 +92,7 @@ while getopts "uhc:t:g:" opt; do
             else
                 group="$(get_opt "$OPTARG" "$(nordvpn_api groups identifier)")"
                 if [ "$group" = "" ]; then
-                    echo "ERROR: $OPTARG is not a valid group identifier. Run '$0 -g list' to list the available group identifiers"
+                    echo "ERROR: $OPTARG is not a valid group identifier. Run '$0 -g list' to list the available group identifiers" >&2
                     exit 1
                 fi
             fi
