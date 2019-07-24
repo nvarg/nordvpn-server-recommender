@@ -3,7 +3,7 @@
 ## Usage
 
 ```
-usage: [-hu] nordvpn-server-recommender.sh [-c <country code>] [-t <technology>] [-g <group>]
+usage: nordvpn-server-recommender.sh [-hu] [-c <country code>] [-t <technology>] [-g <group>]
 
 -c <country code>     only recommends servers located in that country
 -c list               displays a list of the available country codes
