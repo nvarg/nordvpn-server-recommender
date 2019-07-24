@@ -27,7 +27,7 @@ requires() {
 }
 
 usage() {
-    echo "usage: [-hu] $0 [-c <country code>] [-t <technology>] [-g <group>]"
+    echo "usage: $0 [-hu] [-c <country code>] [-t <technology>] [-g <group>]"
 }
 
 help() {
