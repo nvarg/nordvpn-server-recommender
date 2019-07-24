@@ -2,8 +2,8 @@
 # NordVPN Server Recommender
 # Returns the top 5 recommended NordVPN servers based on your
 # geographic location and current server loads using the api at
-# Requires jq and curl
 # https://nordvpn.com/servers/tools/
+# Requires jq and curl
 # Natan Vargas (https://github.com/nvarg)
 
 set -e
