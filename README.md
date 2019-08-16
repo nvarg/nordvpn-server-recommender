@@ -1,5 +1,7 @@
 # Nord VPN Server Recommender
 
+Gives the top 5 fastest servers matching the given criteria
+
 ## Usage
 
 ```
